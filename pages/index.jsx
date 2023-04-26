@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import MeetupList from '../components/meetups/MeetupList'
 
 const dummyMeetups = [
@@ -22,17 +21,31 @@ const dummyMeetups = [
 // 문제는 그곳에 렌더링된 HTML 컨텐츠가 담겨져 있다.
 // 첫번째 사이클의 HTML 컨텐츠에는 내용에 해당하는 HTML이 존재하지 않는다.
 // 사전 렌더링이 요청한 데이터를 기다리지 않기 때문이다. 그러면 이것을 해결하려면? 
-function HomePage() {
-    const [loadedMeetups, setLoadedMeetups] = useState([]);
-
-    useEffect(() => {
-        setLoadedMeetups(dummyMeetups);
-    }, []);
-    return <MeetupList meetups={loadedMeetups} />
+function HomePage(props) {
+    return <MeetupList meetups={props.meetups} />
 }
+
+export const getStaticProps = () => {
+    return {
+        props: {
+            meetups: dummyMeetups,
+        },
+        revalidate: 10 // 점진적 정적 생성 기능 활용 가능. 10초마다 서버에서 페이지 생성
+    }
+}
+
+// export const getServerSideProps = (context) => {
+//     const req = context.req
+//     const res = context.res
+
+//     console.log(req);
+//     return {
+//         props: {
+//             meetups: dummyMeetups
+//         }
+//     }
+// }
 
 export default HomePage;
 
 // root 경로
-
-// 
