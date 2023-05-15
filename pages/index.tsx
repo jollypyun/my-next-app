@@ -21,7 +21,7 @@ const dummyMeetups = [
 // 문제는 그곳에 렌더링된 HTML 컨텐츠가 담겨져 있다.
 // 첫번째 사이클의 HTML 컨텐츠에는 내용에 해당하는 HTML이 존재하지 않는다.
 // 사전 렌더링이 요청한 데이터를 기다리지 않기 때문이다. 그러면 이것을 해결하려면? 
-function HomePage(props) {
+function HomePage(props:any) {
     return <MeetupList meetups={props.meetups} />
 }
 
