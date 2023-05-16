@@ -14,6 +14,15 @@ function MainNavigation() {
           <li>
             <Link href='/new-meetup'>Add New Meetup</Link>
           </li>
+          <li>
+            <Link href='/nation'>Nation</Link>
+          </li>
+          <li>
+            <Link href='/login'>Login</Link>
+          </li>
+          <li>
+            <Link href='/join'>Join</Link>
+          </li>
         </ul>
       </nav>
     </header>

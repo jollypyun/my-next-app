@@ -2,6 +2,7 @@ import '@/styles/globals.css'
 import Layout from '../components/layout/Layout'
 import { QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import { Provider } from 'jotai';
+import { Suspense } from 'react';
 
 export default function App({ Component, pageProps }) {
   const queryClient = new QueryClient();
@@ -9,9 +10,11 @@ export default function App({ Component, pageProps }) {
   return (
     <QueryClientProvider client={queryClient}>
       <Provider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Suspense fallback="loading">
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Suspense>
       </Provider>
     </QueryClientProvider>
   )
