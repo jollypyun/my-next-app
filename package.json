@@ -21,9 +21,9 @@
     "jotai": "^2.1.0",
     "jotai-tanstack-query": "^0.7.0",
     "next": "13.2.4",
+    "next-recaptcha-v3": "^1.1.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-google-recaptcha-v3": "^1.10.1",
     "react-hook-form": "^7.43.9",
     "typescript": "5.0.3"
   },

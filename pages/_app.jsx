@@ -3,6 +3,8 @@ import Layout from '../components/layout/Layout'
 import { QueryClient, QueryClientProvider} from '@tanstack/react-query'
 import { Provider } from 'jotai';
 import { Suspense } from 'react';
+import { ReCaptchaProvider } from 'next-recaptcha-v3';
+
 
 export default function App({ Component, pageProps }) {
   const queryClient = new QueryClient();
@@ -12,7 +14,16 @@ export default function App({ Component, pageProps }) {
       <Provider>
         <Suspense fallback="loading">
           <Layout>
-            <Component {...pageProps} />
+            <ReCaptchaProvider reCaptchaKey={`${process.env.RECAPTCHA_KEY}`}
+              scriptProps={{
+                async: true,
+                defer: false,
+                appendTo: "head",
+                nonce: undefined
+              }}
+            > 
+              <Component {...pageProps} />
+            </ReCaptchaProvider>
           </Layout>
         </Suspense>
       </Provider>
