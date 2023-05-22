@@ -1,6 +1,6 @@
-
 import axios from "axios";
 import { useReCaptcha } from "next-recaptcha-v3";
+import { useRouter } from "next/router";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
 
@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 const Login = () => {
     const {handleSubmit, register, reset} = useForm()
     const {executeRecaptcha} = useReCaptcha()
+    const router = useRouter()
 
     const onSubmit = useCallback(async (data) => {
         const token = await executeRecaptcha('login');
@@ -28,6 +29,7 @@ const Login = () => {
             console.log(res);
             if(res.data.code === '2000') {
                 console.log('login success');
+                router.push("/")
             } else {
                 console.log('login error : ' + res.data.message);
             }
