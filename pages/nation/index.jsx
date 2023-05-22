@@ -6,7 +6,7 @@ const nationList = atom([])
 const [nationAtom] = atomsWithQuery((get) => ({
     queryKey: ['nation', get(nationList)],
     queryFn: async ({queryKey: []}) => {
-        const res = await axios.get("http://localhost:9010/nation/allNation")
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_SERVER_URL}/nation/allNation`)
         return res.data
     }
 }))

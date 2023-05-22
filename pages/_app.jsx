@@ -8,13 +8,13 @@ import { ReCaptchaProvider } from 'next-recaptcha-v3';
 
 export default function App({ Component, pageProps }) {
   const queryClient = new QueryClient();
-
+  
   return (
     <QueryClientProvider client={queryClient}>
       <Provider>
         <Suspense fallback="loading">
           <Layout>
-            <ReCaptchaProvider reCaptchaKey={`${process.env.RECAPTCHA_KEY}`}
+            <ReCaptchaProvider reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_KEY}
               scriptProps={{
                 async: true,
                 defer: false,
