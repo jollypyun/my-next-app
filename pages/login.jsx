@@ -1,5 +1,7 @@
+import { Button } from "@mui/material";
 import axios from "axios";
 import { useReCaptcha } from "next-recaptcha-v3";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useCallback } from "react";
 import { useForm } from "react-hook-form";
@@ -57,7 +59,8 @@ const Login = () => {
                         {...register("password")} />
                 </div>
                 <button type="submit" >login</button>
-            </form>
+            </form>            
+            <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/auth/google/code/google`}>구글 로그인</Link>
         </>
     )
 }
