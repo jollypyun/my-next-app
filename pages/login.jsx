@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import axios from "axios";
 import { useReCaptcha } from "next-recaptcha-v3";
 import Link from "next/link";
@@ -60,7 +59,7 @@ const Login = () => {
                 </div>
                 <button type="submit" >login</button>
             </form>            
-            <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/auth/google/code/google`}>구글 로그인</Link>
+            <Link href={`${process.env.NEXT_PUBLIC_SERVER_URL}/login/oauth2/code/google`}>구글 로그인</Link>
         </>
     )
 }
